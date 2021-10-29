@@ -1,0 +1,78 @@
+<!-- 
+  Authors : initappz (Rahul Jograna)
+  Website : https://initappz.com/
+  App Name : ionic 5 foodies app
+  Created : 28-Feb-2021
+  This App Template Source code is licensed as per the
+  terms found in the Website https://initappz.com/license
+  Copyright and Good Faith Purchasers © 2020-present initappz.
+ -->
+ <ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-button (click)="util.back()">
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title *ngIf="from === 'cart'">{{util.translate('Invoice Data')}}</ion-title>
+    <ion-title *ngIf="from === 'accont'">{{util.translate('Manage Invoice')}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div class="group">
+    <div class="mainContent">
+      <ion-button (click)="addNew()" expand="block" fill="clear">
+        <ion-icon slot="start" name="add"></ion-icon>
+        {{util.translate('Add Invoice')}}
+      </ion-button>
+      <div class="noData" *ngIf="!dummy?.length && !myinvoices?.length"
+        [style.backgroundImage]="'url(assets/nothing.jpg)'">
+      </div>
+      <div *ngFor="let item of dummy">
+        <ion-list lines="none">
+          <ion-item>
+            <ion-thumbnail slot="start">
+              <ion-skeleton-text animated></ion-skeleton-text>
+            </ion-thumbnail>
+            <ion-label>
+              <h3>
+                <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+              </h3>
+              <p>
+                <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+              </p>
+              <p>
+                <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+              </p>
+            </ion-label>
+          </ion-item>
+        </ion-list>
+      </div>
+      <ion-list *ngIf="from ==='cart'">
+        <ion-radio-group [(ngModel)]="selectedInvoice">
+          <ion-item *ngFor="let item of myinvoices" class="list">
+            <ion-label class="title">NIT: {{item.nit}} <br>
+              <span class="name">{{item.legal_name}}</span>
+            </ion-label>
+            <!-- <ion-label class="name"></ion-label> -->
+            <ion-radio [value]="item.id" slot="start" mode="md"></ion-radio>
+          </ion-item>
+        </ion-radio-group>
+      </ion-list>
+      <div *ngIf="from ==='accont'">
+        <div class="list" *ngFor="let item of myinvoices" scrollX="true">
+          <ion-label class="title">NIT: {{item.nit}}</ion-label>
+          <ion-label class="name">{{item.legal_name}}
+          </ion-label>
+          <ion-icon class="moreIcon" (click)="openMenu(item,$event)" name="ellipsis-vertical-outline">
+          </ion-icon>
+        </div>
+      </div>
+    </div>
+  </div>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" *ngIf="selectedInvoice" (click)="selectInvoice()">
+    <ion-fab-button>
+      <ion-icon name="arrow-forward-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

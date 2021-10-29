@@ -1,0 +1,72 @@
+<!-- 
+  Authors : initappz (Rahul Jograna)
+  Website : https://initappz.com/
+  App Name : ionic 5 foodies app
+  Created : 28-Feb-2021
+  This App Template Source code is licensed as per the
+  terms found in the Website https://initappz.com/license
+  Copyright and Good Faith Purchasers © 2020-present initappz.
+ -->
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-button (click)="util.back()">
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>{{name}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="main_content_div">
+    <div class="upper_div">
+
+      <div class="back_image"
+        [ngStyle]="{'background-image':'url('+api.mediaURL+cover+'),url(assets/placeholder.jpg)'}">
+
+        <div class="open_div" *ngIf="isOpen">{{util.translate('open')}}</div>
+        <div class="close_div" *ngIf="!isOpen">{{util.translate('Closed')}}</div>
+        <ion-badge class="menu_badge"
+          [ngStyle]="{'background-color': ratting>=80?'#00a573':ratting>=70 && ratting<79?'#fcb813':'#d24141'}"
+          mode="ios">
+          {{ratting}}</ion-badge>
+
+        <div class="abs_div">
+          <ion-label class="bold_lbl">{{name}}</ion-label>
+          <ion-label class="small_lbl">{{cusine}}</ion-label>
+        </div>
+      </div>
+
+      <!-- <div class="content_div">
+        <ion-label class="addr_lbl">
+          <ion-icon name="navigate-outline"></ion-icon> : {{address}}
+        </ion-label>
+        <ion-label class="addr_lbl">
+          <ion-icon name="alarm-outline"></ion-icon>: {{open}} : {{close}}
+        </ion-label>
+        <ion-label class="addr_lbl">
+          <ion-icon name="call-outline"></ion-icon>: {{phone}}
+        </ion-label>
+      </div> -->
+    </div>
+
+    <!-- <div class="slider_div">
+      <ion-slides [options]="slideOpts">
+        <ion-slide *ngFor="let item of images">
+          <div class="slide_image" [ngStyle]="{'background-image':'url('+api.mediaURL+item+')'}"></div>
+        </ion-slide>
+      </ion-slides>
+    </div> -->
+
+    <!-- <ion-label class="desc">{{descritions}}</ion-label> -->
+    <br>
+    <div>
+      <div *ngFor="let banner of banners" style="padding: 16px 16px 0;" (click)="add(banner.prod_detail)">
+        <img [src]="api.mediaURL + banner.banner" alt="">
+      </div>
+    </div>
+    <br>
+
+  </div>
+</ion-content>

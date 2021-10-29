@@ -1,0 +1,16 @@
+img {
+  width: 180px;
+  height: 180px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+ion-footer {
+  ion-button {
+    width: 38%;
+    font-size: 15px;
+    text-transform: capitalize;
+  }
+}

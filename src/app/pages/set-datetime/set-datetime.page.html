@@ -1,0 +1,45 @@
+<ion-header class="ion-no-border">
+    <ion-toolbar>
+        <ion-title style="padding: 0 45px;"></ion-title>
+
+        <!-- <ion-buttons slot="end">
+            <ion-button fill="clear" size="small" (click)="close()">
+                <ion-icon name="close" color="danger"></ion-icon>
+            </ion-button>
+        </ion-buttons> -->
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding-start ion-padding-end ion-padding-bottom">
+    <div align="center">
+        <p class="ion-no-margin">{{util.translate('Pick a delivery Date and Time')}}</p>
+    </div>
+    <br>
+    <div>
+        <ion-list>
+            <ion-item lines="none">
+                <ion-label position="stacked">{{util.translate('Delivery Date')}}</ion-label>
+                <!-- <ion-input type="date" [(ngModel)]="date" displayFormat="YYYY-MM-DD" placeholder="Y-M-D"></ion-input> -->
+                <ion-select [(ngModel)]="date" (ionChange)="changeDate($event)" placeholder="Seleccione Fecha">
+                    <!-- <ion-select-option disabled value="">Select Date</ion-select-option> -->
+                    <ion-select-option [disabled]="!item.enable" [value]="item.date" *ngFor="let item of dates">{{item.disaplyDay}}</ion-select-option>
+                </ion-select>
+            </ion-item>
+            <br>
+            <ion-item lines="none">
+                <ion-label position="stacked">{{util.translate('Delivery Time')}}</ion-label>
+                <!-- <ion-input type="time" [(ngModel)]="time" displayFormat="HH-ii-ss" placeholder="h:m am"></ion-input> -->
+                <ion-select [(ngModel)]="time" placeholder="Seleccione Hora">
+                    <!-- <ion-select-option disabled value="">Select Time</ion-select-option> -->
+                    <ion-select-option [disabled]="!item.enable" [value]="item.time" *ngFor="let item of times">{{item.time}}</ion-select-option>
+                </ion-select>
+            </ion-item>
+        </ion-list>
+    </div>
+</ion-content>
+
+<ion-footer>
+    <ion-toolbar align="center">
+        <ion-button shape="round" size="medium" color="success" style="width: 50%;" [disabled]="!date || !time" (click)="apply()">{{util.translate('Apply')}}</ion-button>
+    </ion-toolbar>
+</ion-footer>

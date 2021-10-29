@@ -1,0 +1,39 @@
+<!-- 
+  Authors : initappz (Rahul Jograna)
+  Website : https://initappz.com/
+  App Name : ionic 5 foodies app
+  Created : 28-Feb-2021
+  This App Template Source code is licensed as per the
+  terms found in the Website https://initappz.com/license
+  Copyright and Good Faith Purchasers © 2020-present initappz.
+ -->
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="close()">
+        <ion-icon slot="icon-only" name="close-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title> {{util.translate('Verify')}} </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="otpContainer">
+    <h2 class="headerText"> {{util.translate('Verification')}} </h2>
+    <p class="subTitleText">{{util.translate('We texted you a code to verify')}}
+      <br> {{util.translate('your phone')}} {{mobile}}
+    </p>
+    <div class="otpInputs">
+      <ng-otp-input (onInputChange)="onOtpChange($event)"
+        [config]="{length:6,inputStyles:{'width': '30px','height': '30px'}}">
+      </ng-otp-input>
+    </div>
+    <ion-button class="btn_class" (click)="continue()" type="submit" expand="block">{{util.translate('Continue')}}
+    </ion-button>
+
+    <ion-button (click)="resend()" *ngIf="resendCode" type="submit" expand="block" fill="clear">
+      {{util.translate('Resend code')}}
+    </ion-button>
+  </div>
+</ion-content>

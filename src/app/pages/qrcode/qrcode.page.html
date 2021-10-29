@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title style="padding: 0px 20px;">QRCode</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  
+  <div align="center" style="width: 100%; height: 100%;">
+    <img [src]="img" alt="">
+  </div>
+
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar align="center">
+    <ion-button color="success" (click)="downloadImage()">Download</ion-button>&nbsp;&nbsp;&nbsp;&nbsp;
+    <ion-button color="primary" (click)="dismiss()">Cancel</ion-button>
+  </ion-toolbar>
+</ion-footer>

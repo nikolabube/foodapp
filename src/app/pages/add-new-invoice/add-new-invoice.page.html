@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="util.back()">
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>{{util.translate('Add New Invoice')}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <br><br>
+  <div class="informations">
+
+    <ion-item>
+      <ion-label position="stacked">{{util.translate('Nit')}}</ion-label>
+      <ion-input [(ngModel)]="nit"></ion-input>
+    </ion-item>
+    <br>
+    <ion-item>
+      <ion-label position="stacked">{{util.translate('Legal Name')}}</ion-label>
+      <ion-input [(ngModel)]="legal_name"></ion-input>
+    </ion-item>
+    <br><br>
+
+    <ion-button *ngIf="from ==='new'" (click)="addNew()" expand="block">
+      {{util.translate('Add')}}
+    </ion-button>
+
+    <ion-button *ngIf="from ==='edit'" (click)="updateInvode()" expand="block">
+      {{util.translate('Update')}}
+    </ion-button>
+
+  </div>
+</ion-content>
